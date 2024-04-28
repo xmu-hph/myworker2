@@ -17,16 +17,19 @@ let myurl = 'https://zip.baipiao.eu.org/31898-1-8443.txt';
 // 下载压缩文件
 async function downloadFile() {
   const myfile = await fetch(myurl);
-	const text = await myfile.text();
-  let https_proxyIPs = [];
+  const text = await myfile.text();
+  https_proxyIPs = [];
   const lines = text.split('\n');
-	let size=20;
+  let size=20;
   for(let i=1;i<size;i++){
     https_proxyIPs.push(lines[Math.floor(lines.length*i/size)]);
   }
-
-	return https_proxyIPs;
+  return https_proxyIPs;
 }
+
+// 设置定时执行，每隔一段时间调用 myFunction 函数
+setInterval(downloadFile, 1000); // 1000 毫秒为间隔时间，即每隔 1 秒执行一次
+// https_proxyIPs = await downloadFile();
 
 if (!isValidUUID(userID)) {
 	throw new Error('uuid is invalid');
