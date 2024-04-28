@@ -55,7 +55,7 @@ export default {
 			if (userID.includes(',')) {
 				userID_Path = userID.split(',')[0];
 			}
-			https_proxyIPs = await downloadFile();
+			//https_proxyIPs = await downloadFile();
 			const upgradeHeader = request.headers.get('Upgrade');
 			if (!upgradeHeader || upgradeHeader !== 'websocket') {
 				const url = new URL(request.url);
